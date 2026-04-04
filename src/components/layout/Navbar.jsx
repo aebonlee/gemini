@@ -69,7 +69,7 @@ export default function Navbar() {
     { path: '/gemini-models', ko: 'Gemini 모델', en: 'Gemini Models' },
     { path: '/gemini-api', ko: 'API 가이드', en: 'API Guide' },
     { path: '/prompt-engineering', ko: '프롬프트 가이드', en: 'Prompt Guide' },
-    { path: '/multimodal', ko: '멀티���달', en: 'Multimodal' },
+    { path: '/multimodal', ko: '멀티모달', en: 'Multimodal' },
     { path: '/notebooklm', ko: 'NotebookLM', en: 'NotebookLM' },
     { path: '/community/board', ko: '커뮤니티', en: 'Community' },
   ];
