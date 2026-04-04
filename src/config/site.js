@@ -77,6 +77,17 @@ export const LEARNING_PATHS = [
     topics: ['이미지 이해', '비디오 분석', '오디오 처리', 'PDF 분석', '이미지 생성'],
   },
   {
+    id: 'notebooklm',
+    icon: 'fa-book-open',
+    nameKo: 'NotebookLM',
+    nameEn: 'NotebookLM',
+    descKo: 'Google NotebookLM으로 문서 분석, 연구, 오디오 브리핑을 활용하는 방법을 학습합니다.',
+    descEn: 'Learn to use Google NotebookLM for document analysis, research, and audio briefings.',
+    color: '#7B1FA2',
+    path: '/notebooklm',
+    topics: ['소스 관리', '오디오 오버뷰', '연구 보조', '스터디 가이드', '협업'],
+  },
+  {
     id: 'model-comparison',
     icon: 'fa-chart-bar',
     nameKo: '모델 비교',

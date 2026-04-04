@@ -16,6 +16,7 @@ const GoogleAIStudioGuide = lazy(() => import('../pages/google-ai-studio/GoogleA
 const VertexAIGuide = lazy(() => import('../pages/vertex-ai/VertexAIGuide'));
 const PromptEngineering = lazy(() => import('../pages/prompt-engineering/PromptEngineering'));
 const MultimodalGuide = lazy(() => import('../pages/multimodal/MultimodalGuide'));
+const NotebookLMGuide = lazy(() => import('../pages/notebooklm/NotebookLMGuide'));
 const ModelComparison = lazy(() => import('../pages/model-comparison/ModelComparison'));
 const Glossary = lazy(() => import('../pages/glossary/Glossary'));
 const Roadmap = lazy(() => import('../pages/roadmap/Roadmap'));
@@ -55,6 +56,7 @@ export default function PublicLayout() {
             <Route path="/vertex-ai" element={<VertexAIGuide />} />
             <Route path="/prompt-engineering" element={<PromptEngineering />} />
             <Route path="/multimodal" element={<MultimodalGuide />} />
+            <Route path="/notebooklm" element={<NotebookLMGuide />} />
             <Route path="/model-comparison" element={<ModelComparison />} />
             <Route path="/glossary" element={<Glossary />} />
             <Route path="/roadmap" element={<Roadmap />} />

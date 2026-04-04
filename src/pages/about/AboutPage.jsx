@@ -110,6 +110,93 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Google AI Services */}
+      <section className="about-vision-section">
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">{isKo ? 'Google AI 서비스 생태계' : 'Google AI Service Ecosystem'}</h2>
+            <p className="section-subtitle">{isKo ? 'Google이 제공하는 AI 서비스와 플랫폼을 소개합니다' : 'Introducing AI services and platforms provided by Google'}</p>
+          </div>
+
+          <div className="guide-table-wrapper" style={{ marginBottom: 32 }}>
+            <table className="guide-table">
+              <thead>
+                <tr>
+                  <th>{isKo ? '서비스' : 'Service'}</th>
+                  <th>{isKo ? '설명' : 'Description'}</th>
+                  <th>{isKo ? '대상' : 'Target Users'}</th>
+                  <th>{isKo ? '주요 기능' : 'Key Features'}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Gemini</strong></td>
+                  <td>{isKo ? 'Google의 차세대 멀티모달 AI 모델 패밀리' : 'Google\'s next-gen multimodal AI model family'}</td>
+                  <td>{isKo ? '모든 사용자' : 'All users'}</td>
+                  <td>{isKo ? '텍스트, 이미지, 오디오, 비디오 처리' : 'Text, image, audio, video processing'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Google AI Studio</strong></td>
+                  <td>{isKo ? '브라우저 기반 AI 개발 환경' : 'Browser-based AI development environment'}</td>
+                  <td>{isKo ? '개발자, 프로토타이핑' : 'Developers, prototyping'}</td>
+                  <td>{isKo ? '프롬프트 설계, 모델 테스트, API 키 발급' : 'Prompt design, model testing, API key issuance'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Vertex AI</strong></td>
+                  <td>{isKo ? 'Google Cloud의 엔터프라이즈 AI 플랫폼' : 'Google Cloud enterprise AI platform'}</td>
+                  <td>{isKo ? '기업, 엔터프라이즈' : 'Enterprise'}</td>
+                  <td>{isKo ? 'SLA, 보안, RAG, 모델 튜닝, 배포' : 'SLA, security, RAG, model tuning, deployment'}</td>
+                </tr>
+                <tr>
+                  <td><strong>NotebookLM</strong></td>
+                  <td>{isKo ? 'AI 기반 연구 및 학습 도우미' : 'AI-powered research and learning assistant'}</td>
+                  <td>{isKo ? '연구자, 학생, 전문가' : 'Researchers, students, professionals'}</td>
+                  <td>{isKo ? '문서 분석, 오디오 요약, 소스 기반 Q&A' : 'Document analysis, audio summary, source-based Q&A'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Gemma</strong></td>
+                  <td>{isKo ? 'Google의 오픈소스 경량 AI 모델' : 'Google\'s open-source lightweight AI model'}</td>
+                  <td>{isKo ? '연구자, 로컬 배포' : 'Researchers, local deployment'}</td>
+                  <td>{isKo ? '로컬 실행, 파인튜닝, 오픈 소스' : 'Local execution, fine-tuning, open source'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Imagen</strong></td>
+                  <td>{isKo ? 'Google의 텍스트-이미지 생성 모델' : 'Google\'s text-to-image generation model'}</td>
+                  <td>{isKo ? '크리에이터, 디자이너' : 'Creators, designers'}</td>
+                  <td>{isKo ? '고품질 이미지 생성, 편집, 인페인팅' : 'High-quality image generation, editing, inpainting'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Veo</strong></td>
+                  <td>{isKo ? 'Google의 AI 비디오 생성 모델' : 'Google\'s AI video generation model'}</td>
+                  <td>{isKo ? '영상 크리에이터' : 'Video creators'}</td>
+                  <td>{isKo ? '텍스트/이미지 기반 비디오 생성' : 'Text/image-based video generation'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Google Search (AI Overview)</strong></td>
+                  <td>{isKo ? 'AI 기반 검색 결과 요약' : 'AI-powered search result summaries'}</td>
+                  <td>{isKo ? '일반 사용자' : 'General users'}</td>
+                  <td>{isKo ? '검색 결과 AI 요약, 관련 질문 추천' : 'AI search summary, related question suggestions'}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="about-vision-grid">
+            {[
+              { icon: 'fa-gem', title: 'Gemini', desc: isKo ? 'Flash, Pro, Ultra 세 가지 티어의 멀티모달 모델. 텍스트, 코드, 이미지, 오디오, 비디오를 네이티브로 처리합니다.' : 'Three-tier multimodal models (Flash, Pro, Ultra). Natively processes text, code, images, audio, and video.' },
+              { icon: 'fa-flask', title: 'Google AI Studio', desc: isKo ? '웹 브라우저에서 바로 Gemini 모델을 테스트하고 프롬프트를 설계할 수 있는 무료 도구입니다.' : 'A free tool to test Gemini models and design prompts directly in the web browser.' },
+              { icon: 'fa-book-open', title: 'NotebookLM', desc: isKo ? '문서를 업로드하면 AI가 분석하여 요약, Q&A, 오디오 브리핑을 생성하는 연구 도우미입니다.' : 'A research assistant that analyzes uploaded documents to generate summaries, Q&A, and audio briefings.' },
+            ].map((v, i) => (
+              <div key={i} className="about-vision-card">
+                <div className="about-vision-icon"><i className={`fa-solid ${v.icon}`} /></div>
+                <h3>{v.title}</h3>
+                <p>{v.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Tech Stack */}
       <section className="about-tech-section">
         <div className="container">

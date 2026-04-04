@@ -26,7 +26,7 @@ export default function Footer() {
               <li><Link to="/google-ai-studio">Google AI Studio</Link></li>
               <li><Link to="/prompt-engineering">{language === 'ko' ? '프롬프트 엔지니어링' : 'Prompt Engineering'}</Link></li>
               <li><Link to="/multimodal">{language === 'ko' ? '멀티모달' : 'Multimodal'}</Link></li>
-              <li><Link to="/glossary">{language === 'ko' ? 'AI 용어사전' : 'AI Glossary'}</Link></li>
+              <li><Link to="/notebooklm">NotebookLM</Link></li>
               <li><Link to="/community/board">{t('nav.community')}</Link></li>
             </ul>
           </div>

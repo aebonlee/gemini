@@ -93,6 +93,7 @@ gemini/
 │   │   ├── vertex-ai/         # Vertex AI 가이드
 │   │   ├── prompt-engineering/ # 프롬프트 엔지니어링
 │   │   ├── multimodal/        # 멀티모달 가이드
+│   │   ├── notebooklm/       # NotebookLM 가이드
 │   │   ├── model-comparison/  # 모델 비교
 │   │   ├── glossary/          # AI 용어사전
 │   │   ├── roadmap/           # 학습 로드맵
@@ -143,6 +144,7 @@ gemini/
 | `/vertex-ai` | VertexAIGuide | Vertex AI 가이드 |
 | `/prompt-engineering` | PromptEngineering | 프롬프트 엔지니어링 |
 | `/multimodal` | MultimodalGuide | 멀티모달 가이드 |
+| `/notebooklm` | NotebookLMGuide | NotebookLM 가이드 |
 | `/model-comparison` | ModelComparison | 모델 비교 |
 | `/glossary` | Glossary | AI 용어사전 |
 | `/roadmap` | Roadmap | 학습 로드맵 |
@@ -162,8 +164,8 @@ gemini/
 3. API 가이드 (API Guide)
 4. 프롬프트 가이드 (Prompt Guide)
 5. 멀티모달 (Multimodal)
-6. AI 뉴스 (AI News)
-7. 커뮤니티 (Community)
+6. NotebookLM
+7. 커뮤니티 (Community) — AI 뉴스는 커뮤니티 하위
 
 ### 학습 경로 (Learning Paths) - 홈페이지
 1. Gemini 모델 가이드 (Flash, Pro, Ultra)
@@ -172,7 +174,8 @@ gemini/
 4. Vertex AI (Enterprise, Grounding, RAG)
 5. 프롬프트 엔지니어링 (System Instructions, Few-shot)
 6. 멀티모달 AI (이미지, 비디오, 오디오)
-7. 모델 비교 (벤치마크, 가격)
+7. NotebookLM (소스 관리, 오디오 오버뷰, 연구 보조)
+8. 모델 비교 (벤치마크, 가격)
 
 ## 주요 기능
 1. **글래스모피즘 네비게이션**: 스크롤 시 블러 효과 변화
