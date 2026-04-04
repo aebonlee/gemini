@@ -66,7 +66,7 @@ export default function Navbar() {
 
   const NAV_ITEMS = [
     { path: '/about', ko: 'About', en: 'About' },
-    { path: '/gemini-models', ko: 'Gemini 모델', en: 'Gemini Models' },
+    { path: '/gemini-learn', ko: 'Gemini 학습', en: 'Gemini Learn' },
     { path: '/gemini-api', ko: 'API 가이드', en: 'API Guide' },
     { path: '/prompt-engineering', ko: '프롬프트 가이드', en: 'Prompt Guide' },
     { path: '/multimodal', ko: '멀티모달', en: 'Multimodal' },

@@ -11,6 +11,7 @@ const Register = lazy(() => import('../pages/Register'));
 const ForgotPassword = lazy(() => import('../pages/ForgotPassword'));
 const AboutPage = lazy(() => import('../pages/about/AboutPage'));
 const GeminiModelsGuide = lazy(() => import('../pages/gemini-models/GeminiModelsGuide'));
+const GeminiLearnGuide = lazy(() => import('../pages/gemini-learn/GeminiLearnGuide'));
 const GeminiAPIGuide = lazy(() => import('../pages/gemini-api/GeminiAPIGuide'));
 const GoogleAIStudioGuide = lazy(() => import('../pages/google-ai-studio/GoogleAIStudioGuide'));
 const VertexAIGuide = lazy(() => import('../pages/vertex-ai/VertexAIGuide'));
@@ -50,6 +51,7 @@ export default function PublicLayout() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/gemini-learn" element={<GeminiLearnGuide />} />
             <Route path="/gemini-models" element={<GeminiModelsGuide />} />
             <Route path="/gemini-api" element={<GeminiAPIGuide />} />
             <Route path="/google-ai-studio" element={<GoogleAIStudioGuide />} />
