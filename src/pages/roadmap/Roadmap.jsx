@@ -1,0 +1,156 @@
+import { useLanguage } from '../../contexts/LanguageContext';
+import SEOHead from '../../components/SEOHead';
+
+const PHASES = [
+  {
+    phase: 1,
+    icon: 'fa-solid fa-seedling',
+    color: '#4CAF50',
+    title: { ko: '기초 - AI & Gemini 입문', en: 'Basics - AI & Gemini Introduction' },
+    duration: { ko: '2~3주', en: '2-3 weeks' },
+    items: [
+      { ko: 'AI / LLM 기본 개념 이해', en: 'Understand AI / LLM fundamentals' },
+      { ko: 'Gemini 모델 패밀리 개요 (Flash, Pro, Ultra)', en: 'Gemini model family overview (Flash, Pro, Ultra)' },
+      { ko: 'Google AI Studio 시작하기', en: 'Getting started with Google AI Studio' },
+      { ko: '기본 프롬프트 작성법', en: 'Basic prompt writing' },
+      { ko: '토큰, 컨텍스트 윈도우 개념 학습', en: 'Learn tokens and context window concepts' },
+    ],
+  },
+  {
+    phase: 2,
+    icon: 'fa-solid fa-brain',
+    color: '#2196F3',
+    title: { ko: '모델 학습 - Gemini 모델 심화', en: 'Model Study - Deep Dive into Gemini Models' },
+    duration: { ko: '3~4주', en: '3-4 weeks' },
+    items: [
+      { ko: 'Gemini Flash vs Pro vs Ultra 비교 분석', en: 'Compare Gemini Flash vs Pro vs Ultra' },
+      { ko: '멀티모달 입력 (이미지, 오디오, 비디오) 이해', en: 'Understand multimodal input (image, audio, video)' },
+      { ko: 'Temperature, Top-K, Top-P 파라미터 실험', en: 'Experiment with Temperature, Top-K, Top-P parameters' },
+      { ko: 'Safety Settings 이해 및 설정', en: 'Understand and configure Safety Settings' },
+      { ko: '모델 성능 벤치마크 분석', en: 'Analyze model performance benchmarks' },
+    ],
+  },
+  {
+    phase: 3,
+    icon: 'fa-solid fa-code',
+    color: '#FF9800',
+    title: { ko: 'API 개발 - Gemini API 마스터', en: 'API Development - Master Gemini API' },
+    duration: { ko: '4~5주', en: '4-5 weeks' },
+    items: [
+      { ko: 'Gemini API 키 발급 및 환경 설정', en: 'Get API key and set up environment' },
+      { ko: 'Python / Node.js SDK 사용법', en: 'Using Python / Node.js SDK' },
+      { ko: 'REST API 직접 호출', en: 'Direct REST API calls' },
+      { ko: 'Streaming 응답 처리', en: 'Handle Streaming responses' },
+      { ko: 'Function Calling 구현', en: 'Implement Function Calling' },
+      { ko: 'Embedding API 활용', en: 'Utilize Embedding API' },
+    ],
+  },
+  {
+    phase: 4,
+    icon: 'fa-solid fa-rocket',
+    color: '#9C27B0',
+    title: { ko: '고급 활용 - 프롬프트 엔지니어링 & 고급 기법', en: 'Advanced - Prompt Engineering & Techniques' },
+    duration: { ko: '3~4주', en: '3-4 weeks' },
+    items: [
+      { ko: 'System Instructions 마스터', en: 'Master System Instructions' },
+      { ko: 'Few-shot / Chain of Thought 프롬프팅', en: 'Few-shot / Chain of Thought prompting' },
+      { ko: 'Grounding with Google Search', en: 'Grounding with Google Search' },
+      { ko: 'RAG (Retrieval-Augmented Generation) 구현', en: 'Implement RAG (Retrieval-Augmented Generation)' },
+      { ko: 'Vertex AI 엔터프라이즈 기능 활용', en: 'Utilize Vertex AI enterprise features' },
+      { ko: '모델 Fine-tuning 기초', en: 'Model Fine-tuning basics' },
+    ],
+  },
+  {
+    phase: 5,
+    icon: 'fa-solid fa-trophy',
+    color: '#F44336',
+    title: { ko: '실전 프로젝트 - 포트폴리오 구축', en: 'Real Projects - Build Your Portfolio' },
+    duration: { ko: '4~6주', en: '4-6 weeks' },
+    items: [
+      { ko: 'AI 챗봇 서비스 개발', en: 'Build an AI chatbot service' },
+      { ko: '멀티모달 이미지 분석 앱 제작', en: 'Create a multimodal image analysis app' },
+      { ko: 'RAG 기반 문서 QA 시스템 구축', en: 'Build a RAG-based document QA system' },
+      { ko: 'Function Calling 기반 에이전트 개발', en: 'Develop a Function Calling-based agent' },
+      { ko: '프로덕션 배포 및 모니터링', en: 'Production deployment and monitoring' },
+      { ko: '포트폴리오 정리 및 공유', en: 'Organize and share portfolio' },
+    ],
+  },
+];
+
+export default function Roadmap() {
+  const { language, t } = useLanguage();
+  const isKo = language === 'ko';
+
+  return (
+    <div className="roadmap-page">
+      <SEOHead title={t('roadmap.title')} path="/roadmap" />
+      <div className="container">
+        <div className="page-header">
+          <h1>{t('roadmap.title')}</h1>
+          <p className="page-subtitle">{t('roadmap.subtitle')}</p>
+        </div>
+
+        <div className="roadmap-timeline" style={{ position: 'relative', maxWidth: 800, margin: '0 auto' }}>
+          <div style={{ position: 'absolute', left: 24, top: 0, bottom: 0, width: 3, background: 'var(--border)', zIndex: 0 }} />
+
+          {PHASES.map((phase) => (
+            <div
+              key={phase.phase}
+              className="card"
+              style={{ position: 'relative', marginBottom: 24, marginLeft: 48, padding: 24 }}
+            >
+              <div
+                style={{
+                  position: 'absolute',
+                  left: -36,
+                  top: 24,
+                  width: 28,
+                  height: 28,
+                  borderRadius: '50%',
+                  background: phase.color,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#fff',
+                  fontSize: '0.75rem',
+                  fontWeight: 700,
+                  zIndex: 1,
+                }}
+              >
+                {phase.phase}
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
+                <i className={phase.icon} style={{ fontSize: '1.3rem', color: phase.color }} />
+                <div>
+                  <h2 style={{ margin: 0, fontSize: '1.1rem' }}>
+                    Phase {phase.phase}: {isKo ? phase.title.ko : phase.title.en}
+                  </h2>
+                  <span style={{ fontSize: '0.8rem', color: 'var(--text-light)' }}>
+                    {isKo ? phase.duration.ko : phase.duration.en}
+                  </span>
+                </div>
+              </div>
+
+              <ul style={{ margin: 0, paddingLeft: 20 }}>
+                {phase.items.map((item, idx) => (
+                  <li key={idx} style={{ marginBottom: 6, lineHeight: 1.6 }}>
+                    {isKo ? item.ko : item.en}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div className="card" style={{ padding: 24, textAlign: 'center', marginTop: 16, maxWidth: 800, margin: '16px auto 0' }}>
+          <p style={{ margin: 0, color: 'var(--text-light)' }}>
+            {isKo
+              ? '총 예상 학습 기간: 16~22주 (4~5개월). 개인 학습 속도에 따라 조절하세요.'
+              : 'Estimated total duration: 16-22 weeks (4-5 months). Adjust based on your learning pace.'}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -1,0 +1,485 @@
+import { useState } from 'react';
+import { useLanguage } from '../../contexts/LanguageContext';
+import SEOHead from '../../components/SEOHead';
+import CodeBlock from '../../components/CodeBlock';
+import TipBox from '../../components/TipBox';
+
+const SECTIONS = [
+  { id: 'overview', icon: 'fa-circle-info', ko: '개요', en: 'Overview' },
+  { id: 'getting-started', icon: 'fa-play', ko: '시작하기', en: 'Getting Started' },
+  { id: 'prompt-design', icon: 'fa-pen-fancy', ko: '프롬프트 디자인', en: 'Prompt Design' },
+  { id: 'structured-output', icon: 'fa-table-cells', ko: '구조화된 출력', en: 'Structured Output' },
+  { id: 'model-tuning', icon: 'fa-sliders', ko: '모델 튜닝', en: 'Model Tuning' },
+  { id: 'api-key', icon: 'fa-key', ko: 'API 키 관리', en: 'API Key Management' },
+];
+
+export default function GoogleAIStudioGuide() {
+  const { language } = useLanguage();
+  const isKo = language === 'ko';
+  const [activeSection, setActiveSection] = useState('overview');
+
+  const currentIdx = SECTIONS.findIndex(s => s.id === activeSection);
+  const prevSection = currentIdx > 0 ? SECTIONS[currentIdx - 1] : null;
+  const nextSection = currentIdx < SECTIONS.length - 1 ? SECTIONS[currentIdx + 1] : null;
+
+  const renderContent = () => {
+    switch (activeSection) {
+      case 'overview':
+        return (
+          <div className="guide-section">
+            <h1>{isKo ? 'Google AI Studio 개요' : 'Google AI Studio Overview'}</h1>
+            <p className="guide-intro">
+              {isKo
+                ? 'Google AI Studio는 Gemini API를 사용하여 프로토타입을 만들고, 프롬프트를 실험하고, 모델을 튜닝할 수 있는 무료 웹 기반 IDE입니다.'
+                : 'Google AI Studio is a free web-based IDE for prototyping, experimenting with prompts, and tuning models using the Gemini API.'}
+            </p>
+
+            <div className="guide-card-grid">
+              <div className="guide-card">
+                <div className="guide-card-icon" style={{ background: 'linear-gradient(135deg, #4285F4, #34A853)' }}>
+                  <i className="fa-solid fa-flask" />
+                </div>
+                <h3>{isKo ? '프롬프트 실험' : 'Prompt Experimentation'}</h3>
+                <p>{isKo ? '다양한 프롬프트를 빠르게 테스트하고 비교할 수 있습니다.' : 'Quickly test and compare various prompts.'}</p>
+              </div>
+              <div className="guide-card">
+                <div className="guide-card-icon" style={{ background: 'linear-gradient(135deg, #FBBC04, #EA4335)' }}>
+                  <i className="fa-solid fa-code" />
+                </div>
+                <h3>{isKo ? '코드 생성' : 'Code Generation'}</h3>
+                <p>{isKo ? '프롬프트에서 바로 Python, JavaScript, cURL 코드를 생성합니다.' : 'Generate Python, JavaScript, and cURL code directly from prompts.'}</p>
+              </div>
+              <div className="guide-card">
+                <div className="guide-card-icon" style={{ background: 'linear-gradient(135deg, #34A853, #4285F4)' }}>
+                  <i className="fa-solid fa-key" />
+                </div>
+                <h3>{isKo ? 'API 키 관리' : 'API Key Management'}</h3>
+                <p>{isKo ? 'API 키를 생성하고 관리할 수 있습니다.' : 'Create and manage your API keys.'}</p>
+              </div>
+            </div>
+
+            <h2>{isKo ? '주요 기능' : 'Key Features'}</h2>
+            <ul className="guide-list">
+              <li><strong>{isKo ? '무료 사용' : 'Free to Use'}</strong> — {isKo ? 'Google 계정만 있으면 무료로 모든 기능을 사용할 수 있습니다' : 'All features are free with just a Google account'}</li>
+              <li><strong>{isKo ? '다양한 프롬프트 유형' : 'Various Prompt Types'}</strong> — {isKo ? 'Freeform, Structured, Chat 프롬프트 지원' : 'Supports Freeform, Structured, and Chat prompts'}</li>
+              <li><strong>{isKo ? '모델 비교' : 'Model Comparison'}</strong> — {isKo ? '여러 모델의 응답을 나란히 비교할 수 있습니다' : 'Compare responses from multiple models side by side'}</li>
+              <li><strong>{isKo ? '파일 업로드' : 'File Upload'}</strong> — {isKo ? '이미지, 오디오, 비디오, 문서를 업로드하여 테스트할 수 있습니다' : 'Upload images, audio, video, and documents for testing'}</li>
+              <li><strong>{isKo ? '프롬프트 저장' : 'Prompt Saving'}</strong> — {isKo ? '작업한 프롬프트를 저장하고 공유할 수 있습니다' : 'Save and share your prompts'}</li>
+            </ul>
+
+            <TipBox type="tip" title={isKo ? '접속 방법' : 'How to Access'}>
+              {isKo
+                ? 'aistudio.google.com에서 Google 계정으로 로그인하면 바로 사용할 수 있습니다. 별도의 설치나 설정이 필요 없습니다.'
+                : 'Sign in with your Google account at aistudio.google.com. No installation or setup required.'}
+            </TipBox>
+          </div>
+        );
+
+      case 'getting-started':
+        return (
+          <div className="guide-section">
+            <h1>{isKo ? 'Google AI Studio 시작하기' : 'Getting Started with Google AI Studio'}</h1>
+            <p className="guide-intro">
+              {isKo
+                ? 'Google AI Studio를 처음 사용하는 분들을 위한 단계별 가이드입니다.'
+                : 'A step-by-step guide for first-time users of Google AI Studio.'}
+            </p>
+
+            <h2>{isKo ? '1단계: 접속 및 로그인' : 'Step 1: Access & Sign In'}</h2>
+            <ol className="guide-list">
+              <li>{isKo ? 'aistudio.google.com에 접속합니다.' : 'Go to aistudio.google.com.'}</li>
+              <li>{isKo ? 'Google 계정으로 로그인합니다.' : 'Sign in with your Google account.'}</li>
+              <li>{isKo ? '서비스 약관에 동의합니다.' : 'Agree to the Terms of Service.'}</li>
+            </ol>
+
+            <h2>{isKo ? '2단계: 새 프롬프트 생성' : 'Step 2: Create New Prompt'}</h2>
+            <p>
+              {isKo
+                ? '좌측 메뉴에서 "Create new prompt"를 클릭하면 새 프롬프트 편집기가 열립니다. 세 가지 프롬프트 유형을 선택할 수 있습니다:'
+                : 'Click "Create new prompt" in the left menu to open a new prompt editor. You can choose from three prompt types:'}
+            </p>
+            <ul className="guide-list">
+              <li><strong>Freeform</strong> — {isKo ? '자유 형식 텍스트 프롬프트. 가장 기본적인 형태입니다.' : 'Free-form text prompt. The most basic form.'}</li>
+              <li><strong>Structured</strong> — {isKo ? '입력/출력 예시를 포함한 구조화된 프롬프트.' : 'Structured prompt with input/output examples.'}</li>
+              <li><strong>Chat</strong> — {isKo ? '대화형 프롬프트. 멀티턴 대화를 시뮬레이션합니다.' : 'Conversational prompt. Simulates multi-turn conversations.'}</li>
+            </ul>
+
+            <h2>{isKo ? '3단계: 모델 설정' : 'Step 3: Model Configuration'}</h2>
+            <p>
+              {isKo
+                ? '우측 패널에서 모델과 생성 파라미터를 설정할 수 있습니다:'
+                : 'In the right panel, you can configure the model and generation parameters:'}
+            </p>
+            <div className="guide-table-wrapper">
+              <table className="guide-table">
+                <thead>
+                  <tr>
+                    <th>{isKo ? '파라미터' : 'Parameter'}</th>
+                    <th>{isKo ? '설명' : 'Description'}</th>
+                    <th>{isKo ? '기본값' : 'Default'}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Temperature</td><td>{isKo ? '응답의 창의성 수준 (0~2)' : 'Creativity level (0~2)'}</td><td>1.0</td></tr>
+                  <tr><td>Top-P</td><td>{isKo ? '토큰 샘플링 확률 범위' : 'Token sampling probability range'}</td><td>0.95</td></tr>
+                  <tr><td>Top-K</td><td>{isKo ? '후보 토큰 수 제한' : 'Candidate token limit'}</td><td>40</td></tr>
+                  <tr><td>Max Output</td><td>{isKo ? '최대 출력 토큰 수' : 'Maximum output tokens'}</td><td>8192</td></tr>
+                  <tr><td>Stop Sequences</td><td>{isKo ? '생성 중지 문자열' : 'Generation stop strings'}</td><td>-</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <TipBox type="tip" title={isKo ? 'Temperature 설정 가이드' : 'Temperature Setting Guide'}>
+              {isKo
+                ? 'Temperature 0에 가까울수록 일관적이고 예측 가능한 응답을, 높을수록 창의적이고 다양한 응답을 생성합니다. 코드 생성은 0~0.3, 창작 글쓰기는 0.7~1.0을 권장합니다.'
+                : 'Temperature closer to 0 produces consistent, predictable responses; higher values produce creative, diverse responses. Recommended: 0~0.3 for code generation, 0.7~1.0 for creative writing.'}
+            </TipBox>
+
+            <h2>{isKo ? '4단계: 코드 내보내기' : 'Step 4: Export Code'}</h2>
+            <p>
+              {isKo
+                ? '프롬프트가 완성되면 "Get code" 버튼을 클릭하여 Python, JavaScript, cURL 등의 코드를 생성할 수 있습니다. 이 코드를 복사하여 자신의 프로젝트에 바로 사용할 수 있습니다.'
+                : 'Once your prompt is ready, click "Get code" to generate code in Python, JavaScript, cURL, etc. Copy this code to use directly in your project.'}
+            </p>
+          </div>
+        );
+
+      case 'prompt-design':
+        return (
+          <div className="guide-section">
+            <h1>{isKo ? '프롬프트 디자인' : 'Prompt Design'}</h1>
+            <p className="guide-intro">
+              {isKo
+                ? 'Google AI Studio에서 효과적인 프롬프트를 설계하는 방법을 알아봅니다.'
+                : 'Learn how to design effective prompts in Google AI Studio.'}
+            </p>
+
+            <h2>{isKo ? 'Freeform 프롬프트' : 'Freeform Prompt'}</h2>
+            <p>
+              {isKo
+                ? '가장 간단한 프롬프트 형태입니다. 시스템 지시사항과 사용자 프롬프트를 자유롭게 작성합니다.'
+                : 'The simplest prompt form. Write system instructions and user prompts freely.'}
+            </p>
+            <CodeBlock language="text" code={`System instruction:
+You are an expert Korean-English translator.
+Translate the given text accurately while maintaining the tone and nuance.
+
+User prompt:
+인공지능 기술의 발전이 우리 사회에 미치는 영향은 지대합니다.`} />
+
+            <h2>{isKo ? 'Structured 프롬프트' : 'Structured Prompt'}</h2>
+            <p>
+              {isKo
+                ? '입력-출력 예시를 포함하여 모델에게 원하는 형식을 알려줍니다. Few-shot 학습에 효과적입니다.'
+                : 'Include input-output examples to show the model the desired format. Effective for few-shot learning.'}
+            </p>
+            <CodeBlock language="text" code={`System instruction:
+Classify the sentiment of the given text as positive, negative, or neutral.
+
+Example 1:
+Input: "This product is amazing! Best purchase ever."
+Output: positive
+
+Example 2:
+Input: "Terrible customer service. Never buying again."
+Output: negative
+
+Example 3:
+Input: "The package arrived on Tuesday."
+Output: neutral
+
+Test input:
+"I love the new features but the price is too high."`} />
+
+            <h2>{isKo ? 'Chat 프롬프트' : 'Chat Prompt'}</h2>
+            <p>
+              {isKo
+                ? '대화형 시나리오를 설계할 때 사용합니다. 시스템 지시사항과 예시 대화를 포함할 수 있습니다.'
+                : 'Used for designing conversational scenarios. Can include system instructions and example conversations.'}
+            </p>
+
+            <TipBox type="tip" title={isKo ? '프롬프트 디자인 팁' : 'Prompt Design Tips'}>
+              {isKo
+                ? '1) 시스템 지시사항에 역할, 규칙, 형식을 명확히 정의하세요. 2) 구체적인 예시를 2-3개 제공하세요. 3) 출력 형식을 명시하세요. 4) 복잡한 작업은 단계별로 분해하세요.'
+                : '1) Clearly define role, rules, and format in system instructions. 2) Provide 2-3 specific examples. 3) Specify the output format. 4) Break complex tasks into steps.'}
+            </TipBox>
+
+            <h2>{isKo ? '프롬프트 갤러리' : 'Prompt Gallery'}</h2>
+            <p>
+              {isKo
+                ? 'Google AI Studio는 다양한 사전 제작 프롬프트를 제공합니다. "Prompt Gallery"에서 다양한 카테고리의 프롬프트를 찾아 활용할 수 있습니다:'
+                : 'Google AI Studio provides various pre-made prompts. Find and use prompts from various categories in the "Prompt Gallery":'}
+            </p>
+            <ul className="guide-list">
+              <li>{isKo ? '텍스트 생성 (스토리, 이메일, 블로그)' : 'Text generation (stories, emails, blogs)'}</li>
+              <li>{isKo ? '데이터 분석 및 추출' : 'Data analysis and extraction'}</li>
+              <li>{isKo ? '코드 생성 및 디버깅' : 'Code generation and debugging'}</li>
+              <li>{isKo ? '번역 및 현지화' : 'Translation and localization'}</li>
+              <li>{isKo ? '이미지 분석 및 설명' : 'Image analysis and description'}</li>
+            </ul>
+          </div>
+        );
+
+      case 'structured-output':
+        return (
+          <div className="guide-section">
+            <h1>{isKo ? '구조화된 출력' : 'Structured Output'}</h1>
+            <p className="guide-intro">
+              {isKo
+                ? 'Google AI Studio에서 JSON 등 구조화된 형식의 출력을 얻는 방법을 알아봅니다.'
+                : 'Learn how to get structured output like JSON from Google AI Studio.'}
+            </p>
+
+            <h2>{isKo ? 'JSON 모드 활성화' : 'Enabling JSON Mode'}</h2>
+            <p>
+              {isKo
+                ? 'AI Studio 우측 패널에서 "Output format"을 "JSON"으로 설정하면 모델이 항상 유효한 JSON을 반환합니다.'
+                : 'Set "Output format" to "JSON" in the right panel of AI Studio, and the model will always return valid JSON.'}
+            </p>
+
+            <CodeBlock language="text" code={`System instruction:
+Extract product information from the given text and return as JSON.
+
+JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "product_name": {"type": "string"},
+    "price": {"type": "number"},
+    "currency": {"type": "string"},
+    "features": {"type": "array", "items": {"type": "string"}},
+    "rating": {"type": "number"}
+  }
+}
+
+User input:
+"The new Galaxy S25 Ultra is priced at $1,299.99. It features a 200MP camera,
+Snapdragon 8 Elite processor, and 5000mAh battery. Users rate it 4.5 out of 5."`} />
+
+            <h2>{isKo ? '출력 예시' : 'Output Example'}</h2>
+            <CodeBlock language="json" code={`{
+  "product_name": "Galaxy S25 Ultra",
+  "price": 1299.99,
+  "currency": "USD",
+  "features": [
+    "200MP camera",
+    "Snapdragon 8 Elite processor",
+    "5000mAh battery"
+  ],
+  "rating": 4.5
+}`} />
+
+            <h2>{isKo ? 'Enum 제약 조건' : 'Enum Constraints'}</h2>
+            <p>
+              {isKo
+                ? 'JSON 스키마에서 enum을 사용하여 허용되는 값의 범위를 제한할 수 있습니다.'
+                : 'Use enum in JSON schema to restrict the range of allowed values.'}
+            </p>
+            <CodeBlock language="json" code={`{
+  "type": "object",
+  "properties": {
+    "sentiment": {
+      "type": "string",
+      "enum": ["positive", "negative", "neutral", "mixed"]
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "language": {
+      "type": "string",
+      "enum": ["en", "ko", "ja", "zh", "other"]
+    }
+  },
+  "required": ["sentiment", "confidence"]
+}`} />
+
+            <TipBox type="important" title={isKo ? '구조화된 출력 모범 사례' : 'Structured Output Best Practices'}>
+              {isKo
+                ? '1) 스키마를 가능한 단순하게 유지하세요. 2) required 필드를 명시하세요. 3) description을 추가하면 모델이 더 정확하게 이해합니다. 4) 중첩 구조는 2-3 레벨까지만 사용하세요.'
+                : '1) Keep schemas as simple as possible. 2) Specify required fields. 3) Adding description helps the model understand better. 4) Use nested structures up to 2-3 levels only.'}
+            </TipBox>
+          </div>
+        );
+
+      case 'model-tuning':
+        return (
+          <div className="guide-section">
+            <h1>{isKo ? '모델 튜닝' : 'Model Tuning'}</h1>
+            <p className="guide-intro">
+              {isKo
+                ? 'Google AI Studio에서 Gemini 모델을 특정 작업에 맞게 미세 조정(Fine-tuning)하는 방법을 알아봅니다.'
+                : 'Learn how to fine-tune Gemini models for specific tasks in Google AI Studio.'}
+            </p>
+
+            <h2>{isKo ? '튜닝이 필요한 경우' : 'When to Use Tuning'}</h2>
+            <ul className="guide-list">
+              <li>{isKo ? '특정 도메인의 전문 용어를 사용해야 할 때' : 'When you need to use domain-specific terminology'}</li>
+              <li>{isKo ? '일관된 출력 형식이 필요할 때' : 'When you need consistent output format'}</li>
+              <li>{isKo ? '프롬프트 엔지니어링만으로 원하는 결과를 얻기 어려울 때' : 'When prompt engineering alone can\'t achieve desired results'}</li>
+              <li>{isKo ? '특정 스타일이나 톤으로 응답해야 할 때' : 'When responses need a specific style or tone'}</li>
+            </ul>
+
+            <h2>{isKo ? '튜닝 데이터 준비' : 'Preparing Tuning Data'}</h2>
+            <p>
+              {isKo
+                ? '튜닝 데이터는 입력-출력 쌍으로 구성된 JSONL 파일 형식으로 준비합니다:'
+                : 'Tuning data is prepared as a JSONL file of input-output pairs:'}
+            </p>
+            <CodeBlock language="json" code={`{"text_input": "Translate to Korean: Hello, how are you?", "output": "안녕하세요, 어떻게 지내세요?"}
+{"text_input": "Translate to Korean: Thank you very much.", "output": "정말 감사합니다."}
+{"text_input": "Translate to Korean: What time is it?", "output": "지금 몇 시인가요?"}
+{"text_input": "Translate to Korean: I love programming.", "output": "저는 프로그래밍을 좋아합니다."}`} />
+
+            <TipBox type="important" title={isKo ? '데이터 품질이 핵심' : 'Data Quality is Key'}>
+              {isKo
+                ? '튜닝 데이터의 품질이 결과에 직접적인 영향을 미칩니다. 최소 20개 이상의 고품질 예시를 준비하세요. 100-500개가 이상적입니다. 데이터에 일관성이 있어야 합니다.'
+                : 'Tuning data quality directly affects results. Prepare at least 20+ high-quality examples. 100-500 is ideal. Data must be consistent.'}
+            </TipBox>
+
+            <h2>{isKo ? '튜닝 단계' : 'Tuning Steps'}</h2>
+            <ol className="guide-list">
+              <li>{isKo ? 'AI Studio에서 "New tuned model" 클릭' : 'Click "New tuned model" in AI Studio'}</li>
+              <li>{isKo ? '베이스 모델 선택 (Flash 권장)' : 'Select base model (Flash recommended)'}</li>
+              <li>{isKo ? '학습 데이터 업로드 (JSONL 파일 또는 Google Sheets)' : 'Upload training data (JSONL file or Google Sheets)'}</li>
+              <li>{isKo ? '하이퍼파라미터 설정 (epoch, learning rate 등)' : 'Configure hyperparameters (epoch, learning rate, etc.)'}</li>
+              <li>{isKo ? '"Start tuning" 클릭하여 학습 시작' : 'Click "Start tuning" to begin training'}</li>
+              <li>{isKo ? '학습 완료 후 테스트 및 평가' : 'Test and evaluate after training completes'}</li>
+            </ol>
+
+            <h2>{isKo ? '튜닝된 모델 사용' : 'Using Tuned Models'}</h2>
+            <CodeBlock language="python" code={`import google.genai as genai
+
+client = genai.Client(api_key="YOUR_API_KEY")
+
+# Use your tuned model
+response = client.models.generate_content(
+    model="tunedModels/your-tuned-model-id",
+    contents="Translate to Korean: Good morning!"
+)
+print(response.text)`} />
+
+            <TipBox type="warning" title={isKo ? '튜닝 제한사항' : 'Tuning Limitations'}>
+              {isKo
+                ? '현재 AI Studio에서는 Gemini Flash 모델만 튜닝 가능합니다. 튜닝된 모델은 무료 티어에서 분당 요청 수가 제한됩니다. 프로덕션 환경에서는 Vertex AI의 튜닝 기능을 사용하는 것이 좋습니다.'
+                : 'Currently only Gemini Flash models can be tuned in AI Studio. Tuned models have limited RPM in the free tier. For production, consider using Vertex AI\'s tuning features.'}
+            </TipBox>
+          </div>
+        );
+
+      case 'api-key':
+        return (
+          <div className="guide-section">
+            <h1>{isKo ? 'API 키 관리' : 'API Key Management'}</h1>
+            <p className="guide-intro">
+              {isKo
+                ? 'Google AI Studio에서 API 키를 생성, 관리, 보호하는 방법을 알아봅니다.'
+                : 'Learn how to create, manage, and protect API keys in Google AI Studio.'}
+            </p>
+
+            <h2>{isKo ? 'API 키 생성' : 'Creating API Keys'}</h2>
+            <ol className="guide-list">
+              <li>{isKo ? 'AI Studio 좌측 메뉴에서 "Get API Key"를 클릭합니다.' : 'Click "Get API Key" in the left menu of AI Studio.'}</li>
+              <li>{isKo ? '"Create API key in new project" 또는 기존 GCP 프로젝트를 선택합니다.' : 'Select "Create API key in new project" or choose an existing GCP project.'}</li>
+              <li>{isKo ? '생성된 키를 안전한 곳에 복사하여 저장합니다.' : 'Copy and store the generated key in a safe place.'}</li>
+            </ol>
+
+            <TipBox type="danger" title={isKo ? 'API 키 보안 필수 사항' : 'API Key Security Essentials'}>
+              {isKo
+                ? '1) API 키를 소스 코드에 직접 포함하지 마세요. 2) 키를 Git에 커밋하지 마세요. 3) 환경 변수를 사용하세요. 4) 키가 노출되면 즉시 재생성하세요. 5) 클라이언트 측 코드(브라우저)에서 키를 사용하지 마세요.'
+                : '1) Never include API keys directly in source code. 2) Don\'t commit keys to Git. 3) Use environment variables. 4) Regenerate immediately if exposed. 5) Never use keys in client-side code (browser).'}
+            </TipBox>
+
+            <h2>{isKo ? '환경 변수 설정' : 'Setting Environment Variables'}</h2>
+            <h3>macOS / Linux</h3>
+            <CodeBlock language="bash" code={`# Add to ~/.bashrc or ~/.zshrc
+export GOOGLE_API_KEY="your-api-key-here"
+
+# Reload shell
+source ~/.zshrc`} />
+
+            <h3>Windows (PowerShell)</h3>
+            <CodeBlock language="bash" code={`# Set for current session
+$env:GOOGLE_API_KEY="your-api-key-here"
+
+# Set permanently
+[System.Environment]::SetEnvironmentVariable("GOOGLE_API_KEY", "your-api-key-here", "User")`} />
+
+            <h3>{isKo ? '.env 파일 사용' : 'Using .env Files'}</h3>
+            <CodeBlock language="bash" code={`# .env file (add to .gitignore!)
+GOOGLE_API_KEY=your-api-key-here`} />
+            <CodeBlock language="python" code={`# Python - using python-dotenv
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+api_key = os.getenv("GOOGLE_API_KEY")`} />
+
+            <h2>{isKo ? 'API 키 제한 설정' : 'API Key Restrictions'}</h2>
+            <p>
+              {isKo
+                ? 'Google Cloud Console에서 API 키에 제한을 추가하여 보안을 강화할 수 있습니다:'
+                : 'You can add restrictions to API keys in the Google Cloud Console to enhance security:'}
+            </p>
+            <ul className="guide-list">
+              <li><strong>{isKo ? 'API 제한' : 'API Restrictions'}</strong> — {isKo ? '특정 API만 호출 가능하도록 제한' : 'Restrict to specific APIs only'}</li>
+              <li><strong>{isKo ? 'IP 제한' : 'IP Restrictions'}</strong> — {isKo ? '특정 IP 주소에서만 사용 가능하도록 제한' : 'Restrict usage to specific IP addresses'}</li>
+              <li><strong>{isKo ? 'HTTP 리퍼러 제한' : 'HTTP Referrer Restrictions'}</strong> — {isKo ? '특정 도메인에서만 사용 가능하도록 제한' : 'Restrict usage to specific domains'}</li>
+            </ul>
+
+            <h2>{isKo ? '사용량 모니터링' : 'Usage Monitoring'}</h2>
+            <p>
+              {isKo
+                ? 'Google Cloud Console의 "APIs & Services" 대시보드에서 API 사용량을 모니터링할 수 있습니다. 비정상적인 사용량이 감지되면 키를 즉시 비활성화하세요.'
+                : 'Monitor API usage in the "APIs & Services" dashboard of Google Cloud Console. If abnormal usage is detected, immediately deactivate the key.'}
+            </p>
+          </div>
+        );
+
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className="guide-page">
+      <SEOHead title={isKo ? 'Google AI Studio 가이드' : 'Google AI Studio Guide'} path="/google-ai-studio" />
+      <div className="guide-layout">
+        <aside className="guide-sidebar">
+          <div className="guide-sidebar-title">{isKo ? '목차' : 'Contents'}</div>
+          <ul className="guide-nav">
+            {SECTIONS.map(s => (
+              <li key={s.id} className="guide-nav-item">
+                <button
+                  className={`guide-nav-link ${activeSection === s.id ? 'active' : ''}`}
+                  onClick={() => setActiveSection(s.id)}
+                >
+                  <i className={`fa-solid ${s.icon} nav-icon`} />
+                  {isKo ? s.ko : s.en}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </aside>
+        <div className="guide-content">
+          {renderContent()}
+          <div className="guide-nav-buttons">
+            {prevSection && (
+              <button className="guide-nav-btn prev" onClick={() => setActiveSection(prevSection.id)}>
+                <i className="fa-solid fa-arrow-left" />
+                {isKo ? prevSection.ko : prevSection.en}
+              </button>
+            )}
+            {nextSection && (
+              <button className="guide-nav-btn next" onClick={() => setActiveSection(nextSection.id)}>
+                {isKo ? nextSection.ko : nextSection.en}
+                <i className="fa-solid fa-arrow-right" />
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
