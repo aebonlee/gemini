@@ -143,6 +143,7 @@ gemini/
 | `/google-ai-studio` | GoogleAIStudioGuide | AI Studio 가이드 |
 | `/vertex-ai` | VertexAIGuide | Vertex AI 가이드 |
 | `/prompt-engineering` | PromptEngineering | 프롬프트 엔지니어링 |
+| `/gemini-learn` | GeminiLearnGuide | Gemini 실용 학습 가이드 |
 | `/multimodal` | MultimodalGuide | 멀티모달 가이드 |
 | `/notebooklm` | NotebookLMGuide | NotebookLM 가이드 |
 | `/model-comparison` | ModelComparison | 모델 비교 |
@@ -158,9 +159,9 @@ gemini/
 | `/admin/*` | AdminDashboard | 관리자 (관리자 인증 필요) |
 
 ## 네비게이션 메뉴 구조
-### 상단 메뉴 (Navbar)
-1. About
-2. Gemini 모델 (Gemini Models)
+### 상단 메뉴 (Navbar) — 최종
+1. About (사이드바 8개 하위 메뉴: 소개, ��전, Gemini 모델, Google AI 서비스, 팀, 기술, 타임라인, FAQ)
+2. Gemini 학습 (Gemini Learn) — 실용 활용 가이드 (대화, 글쓰기, 코딩, 리서치, 크리에이티브, 생산성, 고급)
 3. API 가이드 (API Guide)
 4. 프롬프트 가이드 (Prompt Guide)
 5. 멀티모달 (Multimodal)
