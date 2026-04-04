@@ -22,7 +22,7 @@ export function AuthProvider({ children }) {
 
     try {
       const { data } = await supabase
-        .from('profiles')
+        .from('gemini_profiles')
         .select('role')
         .eq('id', currentUser.id)
         .single();

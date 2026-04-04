@@ -2,8 +2,8 @@ import { supabase } from './supabase';
 
 export async function getPosts({ category, search, limit } = {}) {
   let query = supabase
-    .from('posts')
-    .select('*, comment_count:comments(count)')
+    .from('gemini_posts')
+    .select('*, comment_count:gemini_comments(count)')
     .order('created_at', { ascending: false });
 
   if (category && category !== 'all') {
@@ -30,10 +30,10 @@ export async function getPosts({ category, search, limit } = {}) {
 }
 
 export async function getPostById(id) {
-  await supabase.rpc('increment_view_count', { post_id: Number(id) }).catch(() => {});
+  await supabase.rpc('gemini_increment_view_count', { post_id: Number(id) }).catch(() => {});
 
   const { data: post, error } = await supabase
-    .from('posts')
+    .from('gemini_posts')
     .select('*')
     .eq('id', id)
     .single();
@@ -41,7 +41,7 @@ export async function getPostById(id) {
   if (error) throw error;
 
   const { data: comments } = await supabase
-    .from('comments')
+    .from('gemini_comments')
     .select('*')
     .eq('post_id', id)
     .order('created_at', { ascending: true });
@@ -51,7 +51,7 @@ export async function getPostById(id) {
 
 export async function createPost({ category, title, content, authorId, authorName }) {
   const { data, error } = await supabase
-    .from('posts')
+    .from('gemini_posts')
     .insert({
       author_id: authorId,
       author_name: authorName,
@@ -68,7 +68,7 @@ export async function createPost({ category, title, content, authorId, authorNam
 
 export async function deletePost(id) {
   const { error } = await supabase
-    .from('posts')
+    .from('gemini_posts')
     .delete()
     .eq('id', id);
 
@@ -77,7 +77,7 @@ export async function deletePost(id) {
 
 export async function createComment({ postId, body, authorId, authorName }) {
   const { data, error } = await supabase
-    .from('comments')
+    .from('gemini_comments')
     .insert({
       post_id: postId,
       author_id: authorId,
@@ -93,7 +93,7 @@ export async function createComment({ postId, body, authorId, authorName }) {
 
 export async function deleteComment(id) {
   const { error } = await supabase
-    .from('comments')
+    .from('gemini_comments')
     .delete()
     .eq('id', id);
 
@@ -102,9 +102,9 @@ export async function deleteComment(id) {
 
 export async function getPostStats() {
   const [postsRes, commentsRes, viewsRes] = await Promise.all([
-    supabase.from('posts').select('id', { count: 'exact', head: true }),
-    supabase.from('comments').select('id', { count: 'exact', head: true }),
-    supabase.from('posts').select('view_count'),
+    supabase.from('gemini_posts').select('id', { count: 'exact', head: true }),
+    supabase.from('gemini_comments').select('id', { count: 'exact', head: true }),
+    supabase.from('gemini_posts').select('view_count'),
   ]);
 
   const totalViews = (viewsRes.data || []).reduce((sum, p) => sum + (p.view_count || 0), 0);
