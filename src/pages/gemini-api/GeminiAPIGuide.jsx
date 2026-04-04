@@ -77,6 +77,25 @@ export default function GeminiAPIGuide() {
                 </tbody>
               </table>
             </div>
+
+            <h2>{isKo ? 'SDK 비교' : 'SDK Comparison'}</h2>
+            <div className="guide-table-wrapper">
+              <table className="guide-table">
+                <thead>
+                  <tr>
+                    <th>SDK</th>
+                    <th>{isKo ? '언어' : 'Language'}</th>
+                    <th>{isKo ? '설치' : 'Install'}</th>
+                    <th>{isKo ? '특징' : 'Features'}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>google-genai</td><td>Python</td><td><code>pip install google-genai</code></td><td>{isKo ? '공식 Python SDK, 비동기 지원' : 'Official Python SDK, async support'}</td></tr>
+                  <tr><td>@google/genai</td><td>Node.js</td><td><code>npm install @google/genai</code></td><td>{isKo ? '공식 Node.js SDK, TypeScript 지원' : 'Official Node.js SDK, TypeScript support'}</td></tr>
+                  <tr><td>REST API</td><td>{isKo ? '모든 언어' : 'Any Language'}</td><td>-</td><td>{isKo ? 'HTTP 호출, curl 호환' : 'HTTP calls, curl compatible'}</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         );
 

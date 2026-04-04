@@ -73,13 +73,15 @@ export default function MultimodalGuide() {
                     <th>{isKo ? '유형' : 'Type'}</th>
                     <th>{isKo ? '지원 형식' : 'Supported Formats'}</th>
                     <th>{isKo ? '최대 크기' : 'Max Size'}</th>
+                    <th>{isKo ? '지원 모델' : 'Models'}</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td>{isKo ? '이미지' : 'Image'}</td><td>PNG, JPEG, WEBP, GIF, HEIC, HEIF</td><td>20MB</td></tr>
-                  <tr><td>{isKo ? '비디오' : 'Video'}</td><td>MP4, MPEG, MOV, AVI, MKV, WEBM, FLV</td><td>2GB (File API)</td></tr>
-                  <tr><td>{isKo ? '오디오' : 'Audio'}</td><td>MP3, WAV, AIFF, AAC, OGG, FLAC</td><td>2GB (File API)</td></tr>
-                  <tr><td>PDF</td><td>PDF</td><td>2GB (File API)</td></tr>
+                  <tr><td>{isKo ? '이미지' : 'Image'}</td><td>PNG, JPEG, WEBP, GIF, HEIC, HEIF</td><td>20MB</td><td>{isKo ? '모든 모델' : 'All Models'}</td></tr>
+                  <tr><td>{isKo ? '비디오' : 'Video'}</td><td>MP4, MPEG, MOV, AVI, MKV, WEBM, FLV</td><td>2GB (File API)</td><td>Flash, Pro</td></tr>
+                  <tr><td>{isKo ? '오디오' : 'Audio'}</td><td>MP3, WAV, AIFF, AAC, OGG, FLAC</td><td>2GB (File API)</td><td>Flash, Pro</td></tr>
+                  <tr><td>PDF</td><td>PDF</td><td>2GB (File API)</td><td>{isKo ? '모든 모델' : 'All Models'}</td></tr>
+                  <tr><td>{isKo ? '텍스트' : 'Text'}</td><td>{isKo ? '일반 텍스트' : 'Plain text'}</td><td>{isKo ? '모델별 상이' : 'Varies'}</td><td>{isKo ? '모든 모델' : 'All Models'}</td></tr>
                 </tbody>
               </table>
             </div>

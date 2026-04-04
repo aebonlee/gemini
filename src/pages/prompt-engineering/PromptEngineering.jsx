@@ -54,6 +54,27 @@ export default function PromptEngineering() {
               </div>
             </div>
 
+            <h2>{isKo ? '프롬프트 기법 비교' : 'Prompt Technique Comparison'}</h2>
+            <div className="guide-table-wrapper">
+              <table className="guide-table">
+                <thead>
+                  <tr>
+                    <th>{isKo ? '기법' : 'Technique'}</th>
+                    <th>{isKo ? '설명' : 'Description'}</th>
+                    <th>{isKo ? '적합한 작업' : 'Best For'}</th>
+                    <th>{isKo ? '난이도' : 'Difficulty'}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Zero-shot</td><td>{isKo ? '예시 없이 직접 지시' : 'Direct instruction without examples'}</td><td>{isKo ? '간단한 작업, 분류' : 'Simple tasks, classification'}</td><td>{isKo ? '쉬움' : 'Easy'}</td></tr>
+                  <tr><td>Few-shot</td><td>{isKo ? '2-5개 예시 제공' : 'Provide 2-5 examples'}</td><td>{isKo ? '형식 제어, 패턴 학습' : 'Format control, pattern learning'}</td><td>{isKo ? '보통' : 'Medium'}</td></tr>
+                  <tr><td>Chain of Thought</td><td>{isKo ? '단계별 추론 유도' : 'Step-by-step reasoning'}</td><td>{isKo ? '수학, 논리 문제' : 'Math, logic problems'}</td><td>{isKo ? '보통' : 'Medium'}</td></tr>
+                  <tr><td>System Instructions</td><td>{isKo ? '역할/규칙 사전 정의' : 'Pre-define role/rules'}</td><td>{isKo ? '일관된 동작, 챗봇' : 'Consistent behavior, chatbots'}</td><td>{isKo ? '쉬움' : 'Easy'}</td></tr>
+                  <tr><td>Tree of Thought</td><td>{isKo ? '여러 경로 탐색' : 'Explore multiple paths'}</td><td>{isKo ? '창의적 문제 해결' : 'Creative problem solving'}</td><td>{isKo ? '어려움' : 'Hard'}</td></tr>
+                </tbody>
+              </table>
+            </div>
+
             <h2>{isKo ? '기본 프롬프트 vs 효과적 프롬프트' : 'Basic vs Effective Prompt'}</h2>
             <h3>{isKo ? '비효과적 프롬프트' : 'Ineffective Prompt'}</h3>
             <CodeBlock language="text" code={`Tell me about Python.`} />
@@ -494,17 +515,28 @@ DO NOT:
             </ul>
 
             <h2>{isKo ? '프롬프트 체크리스트' : 'Prompt Checklist'}</h2>
-            <CodeBlock language="text" code={`Before finalizing your prompt, check:
-
-[ ] Role/persona clearly defined
-[ ] Task is specific and unambiguous
-[ ] Output format is specified
-[ ] Examples included (if needed)
-[ ] Constraints and limitations stated
-[ ] Edge cases addressed
-[ ] Tested with diverse inputs
-[ ] Safety considerations included
-[ ] Cost-efficient (appropriate model and token usage)`} />
+            <div className="guide-table-wrapper">
+              <table className="guide-table">
+                <thead>
+                  <tr>
+                    <th>{isKo ? '항목' : 'Item'}</th>
+                    <th>{isKo ? '설명' : 'Description'}</th>
+                    <th>{isKo ? '우선순위' : 'Priority'}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>{isKo ? '역할 정의' : 'Role defined'}</td><td>{isKo ? '모델이 수행할 역할/페르소나가 명확한가' : 'Is the role/persona clearly defined?'}</td><td>{isKo ? '필수' : 'Required'}</td></tr>
+                  <tr><td>{isKo ? '구체적 작업' : 'Specific task'}</td><td>{isKo ? '작업이 구체적이고 모호하지 않은가' : 'Is the task specific and unambiguous?'}</td><td>{isKo ? '필수' : 'Required'}</td></tr>
+                  <tr><td>{isKo ? '출력 형식' : 'Output format'}</td><td>{isKo ? '원하는 출력 형식이 명시되어 있는가' : 'Is the desired output format specified?'}</td><td>{isKo ? '필수' : 'Required'}</td></tr>
+                  <tr><td>{isKo ? '예시 포함' : 'Examples included'}</td><td>{isKo ? '필요한 경우 Few-shot 예시가 포함되어 있는가' : 'Are few-shot examples included if needed?'}</td><td>{isKo ? '권장' : 'Recommended'}</td></tr>
+                  <tr><td>{isKo ? '제약 조건' : 'Constraints'}</td><td>{isKo ? '제한사항과 금지 사항이 명시되어 있는가' : 'Are constraints and limitations stated?'}</td><td>{isKo ? '권장' : 'Recommended'}</td></tr>
+                  <tr><td>{isKo ? '엣지 케이스' : 'Edge cases'}</td><td>{isKo ? '예외 상황에 대한 처리가 포함되어 있는가' : 'Are edge cases addressed?'}</td><td>{isKo ? '선택' : 'Optional'}</td></tr>
+                  <tr><td>{isKo ? '다양한 입력 테스트' : 'Diverse testing'}</td><td>{isKo ? '다양한 입력으로 테스트했는가' : 'Tested with diverse inputs?'}</td><td>{isKo ? '권장' : 'Recommended'}</td></tr>
+                  <tr><td>{isKo ? '안전성 고려' : 'Safety considerations'}</td><td>{isKo ? '안전한 사용에 대한 고려가 포함되어 있는가' : 'Are safety considerations included?'}</td><td>{isKo ? '필수' : 'Required'}</td></tr>
+                  <tr><td>{isKo ? '비용 효율성' : 'Cost efficiency'}</td><td>{isKo ? '적절한 모델과 토큰 사용량인가' : 'Is model and token usage appropriate?'}</td><td>{isKo ? '권장' : 'Recommended'}</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         );
 

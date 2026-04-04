@@ -67,6 +67,27 @@ export default function GoogleAIStudioGuide() {
               <li><strong>{isKo ? '프롬프트 저장' : 'Prompt Saving'}</strong> — {isKo ? '작업한 프롬프트를 저장하고 공유할 수 있습니다' : 'Save and share your prompts'}</li>
             </ul>
 
+            <h2>{isKo ? '무료 vs 유료 티어 비교' : 'Free vs Paid Tier Comparison'}</h2>
+            <div className="guide-table-wrapper">
+              <table className="guide-table">
+                <thead>
+                  <tr>
+                    <th>{isKo ? '기능' : 'Feature'}</th>
+                    <th>{isKo ? '무료 티어' : 'Free Tier'}</th>
+                    <th>{isKo ? '유료 티어 (Pay-as-you-go)' : 'Paid Tier (Pay-as-you-go)'}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>{isKo ? '요청 제한 (RPM)' : 'Rate Limit (RPM)'}</td><td>15 RPM</td><td>{isKo ? '모델별 상이 (최대 2,000 RPM)' : 'Varies by model (up to 2,000 RPM)'}</td></tr>
+                  <tr><td>{isKo ? '일일 요청 수' : 'Daily Requests'}</td><td>1,500 RPD</td><td>{isKo ? '무제한' : 'Unlimited'}</td></tr>
+                  <tr><td>{isKo ? '데이터 학습 사용' : 'Data Used for Training'}</td><td>{isKo ? '사용될 수 있음' : 'May be used'}</td><td>{isKo ? '사용되지 않음' : 'Not used'}</td></tr>
+                  <tr><td>{isKo ? '모델 튜닝' : 'Model Tuning'}</td><td>{isKo ? '제한적' : 'Limited'}</td><td>{isKo ? '전체 지원' : 'Full support'}</td></tr>
+                  <tr><td>{isKo ? '컨텍스트 캐싱' : 'Context Caching'}</td><td>{isKo ? '미지원' : 'Not available'}</td><td>{isKo ? '지원' : 'Available'}</td></tr>
+                  <tr><td>SLA</td><td>{isKo ? '없음' : 'None'}</td><td>{isKo ? '없음 (Vertex AI에서 제공)' : 'None (available via Vertex AI)'}</td></tr>
+                </tbody>
+              </table>
+            </div>
+
             <TipBox type="tip" title={isKo ? '접속 방법' : 'How to Access'}>
               {isKo
                 ? 'aistudio.google.com에서 Google 계정으로 로그인하면 바로 사용할 수 있습니다. 별도의 설치나 설정이 필요 없습니다.'
@@ -203,6 +224,25 @@ Test input:
                 ? '1) 시스템 지시사항에 역할, 규칙, 형식을 명확히 정의하세요. 2) 구체적인 예시를 2-3개 제공하세요. 3) 출력 형식을 명시하세요. 4) 복잡한 작업은 단계별로 분해하세요.'
                 : '1) Clearly define role, rules, and format in system instructions. 2) Provide 2-3 specific examples. 3) Specify the output format. 4) Break complex tasks into steps.'}
             </TipBox>
+
+            <h2>{isKo ? '프롬프트 유형 비교' : 'Prompt Type Comparison'}</h2>
+            <div className="guide-table-wrapper">
+              <table className="guide-table">
+                <thead>
+                  <tr>
+                    <th>{isKo ? '유형' : 'Type'}</th>
+                    <th>{isKo ? '설명' : 'Description'}</th>
+                    <th>{isKo ? '적합한 작업' : 'Best For'}</th>
+                    <th>{isKo ? '예시 지원' : 'Examples Support'}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Freeform</td><td>{isKo ? '자유 형식 텍스트 입력' : 'Free-form text input'}</td><td>{isKo ? '일반 생성, 요약, 번역' : 'General generation, summarization, translation'}</td><td>{isKo ? '없음' : 'None'}</td></tr>
+                  <tr><td>Structured</td><td>{isKo ? '입력/출력 예시 포함' : 'With input/output examples'}</td><td>{isKo ? '분류, 데이터 추출, 형식 제어' : 'Classification, data extraction, format control'}</td><td>{isKo ? '테이블 형식' : 'Table format'}</td></tr>
+                  <tr><td>Chat</td><td>{isKo ? '대화형 멀티턴' : 'Conversational multi-turn'}</td><td>{isKo ? '챗봇, Q&A, 대화 시뮬레이션' : 'Chatbots, Q&A, conversation simulation'}</td><td>{isKo ? '대화 예시' : 'Conversation examples'}</td></tr>
+                </tbody>
+              </table>
+            </div>
 
             <h2>{isKo ? '프롬프트 갤러리' : 'Prompt Gallery'}</h2>
             <p>

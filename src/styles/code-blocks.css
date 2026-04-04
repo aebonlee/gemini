@@ -147,10 +147,19 @@
 }
 .tip-box.danger .tip-box-icon { color: #EF4444; }
 
-/* Highlighter effect on bold text in guide content */
+/* Bold text in guide content */
 .guide-content strong {
-    background: linear-gradient(transparent 60%, rgba(66, 133, 244, 0.2) 60%);
     font-weight: 700;
+}
+
+/* Highlight class for explicit highlighter effect */
+.highlight {
+    background: linear-gradient(transparent 60%, rgba(66, 133, 244, 0.2) 60%);
+}
+
+/* Targeted highlight for paragraph-level bold (not inside lists, tables, cards, tipboxes) */
+.guide-content .guide-section > p > strong {
+    background: linear-gradient(transparent 60%, rgba(66, 133, 244, 0.2) 60%);
 }
 
 /* Dark mode adjustments */
@@ -179,6 +188,9 @@
     border-color: rgba(239, 68, 68, 0.2);
     color: #fca5a5;
 }
-[data-theme="dark"] .guide-content strong {
+[data-theme="dark"] .highlight {
+    background: linear-gradient(transparent 60%, rgba(66, 133, 244, 0.15) 60%);
+}
+[data-theme="dark"] .guide-content .guide-section > p > strong {
     background: linear-gradient(transparent 60%, rgba(66, 133, 244, 0.15) 60%);
 }

@@ -80,6 +80,27 @@ export default function VertexAIGuide() {
               </table>
             </div>
 
+            <h2>{isKo ? '상세 기능 비교' : 'Detailed Feature Comparison'}</h2>
+            <div className="guide-table-wrapper">
+              <table className="guide-table">
+                <thead>
+                  <tr>
+                    <th>{isKo ? '항목' : 'Category'}</th>
+                    <th>Google AI Studio</th>
+                    <th>Vertex AI</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>{isKo ? 'RAG / 그라운딩' : 'RAG / Grounding'}</td><td>{isKo ? 'Google 검색만' : 'Google Search only'}</td><td>{isKo ? 'Google 검색 + 커스텀 데이터' : 'Google Search + Custom data'}</td></tr>
+                  <tr><td>{isKo ? '모델 배포' : 'Model Deployment'}</td><td>{isKo ? '서버리스만' : 'Serverless only'}</td><td>{isKo ? '서버리스 + 프로비저닝' : 'Serverless + Provisioned'}</td></tr>
+                  <tr><td>{isKo ? '모니터링' : 'Monitoring'}</td><td>{isKo ? '기본 사용량' : 'Basic usage'}</td><td>{isKo ? 'Cloud Monitoring 통합' : 'Cloud Monitoring integration'}</td></tr>
+                  <tr><td>{isKo ? '평가 도구' : 'Evaluation Tools'}</td><td>{isKo ? '없음' : 'None'}</td><td>{isKo ? 'BLEU, ROUGE 등 내장' : 'Built-in BLEU, ROUGE, etc.'}</td></tr>
+                  <tr><td>{isKo ? '오픈소스 모델' : 'Open Source Models'}</td><td>{isKo ? '없음' : 'None'}</td><td>{isKo ? 'Model Garden (Llama, Gemma 등)' : 'Model Garden (Llama, Gemma, etc.)'}</td></tr>
+                  <tr><td>{isKo ? '네트워크 보안' : 'Network Security'}</td><td>{isKo ? '없음' : 'None'}</td><td>VPC-SC</td></tr>
+                </tbody>
+              </table>
+            </div>
+
             <TipBox type="tip" title={isKo ? '언제 Vertex AI를 선택해야 하나요?' : 'When Should You Choose Vertex AI?'}>
               {isKo
                 ? '프로덕션 환경에서 SLA가 필요하거나, 기업 보안 요구사항이 있거나, 대규모 배치 처리가 필요하거나, 기존 GCP 인프라와 통합해야 할 때 Vertex AI를 선택하세요.'

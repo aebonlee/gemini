@@ -19,6 +19,7 @@
     .mobile-menu-toggle { display: flex; }
     .guide-layout { grid-template-columns: 240px 1fr; }
     .guide-content { padding: 32px; }
+    .guide-card-grid { grid-template-columns: repeat(2, 1fr); }
     .workflow-grid { grid-template-columns: repeat(2, 1fr); }
     .admin-stats { grid-template-columns: repeat(2, 1fr); }
     .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
@@ -80,6 +81,9 @@
     .path-card { padding: 24px 20px; }
     .path-name { font-size: 17px; }
     .path-icon { width: 40px; height: 40px; font-size: 18px; }
+
+    /* Guide cards - single column on mobile */
+    .guide-card-grid { grid-template-columns: 1fr; }
 
     /* Guide Layout - full width with horizontal scroll nav */
     .guide-layout { grid-template-columns: 1fr; }

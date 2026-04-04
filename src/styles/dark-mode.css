@@ -188,6 +188,23 @@ html[data-theme="dark"] .about-team-role {
     background: #334155;
 }
 
+/* Guide Cards */
+html[data-theme="dark"] .guide-card {
+    background: #1E293B;
+    border-color: #334155;
+}
+html[data-theme="dark"] .guide-table thead th {
+    background: #334155;
+}
+html[data-theme="dark"] .guide-table tbody tr:hover td {
+    background: rgba(255,255,255,0.03);
+}
+html[data-theme="dark"] .guide-table code {
+    background: #334155;
+    border-color: #475569;
+    color: #93c5fd;
+}
+
 /* Footer stays dark regardless */
 html[data-theme="dark"] .footer {
     background: #020617;
