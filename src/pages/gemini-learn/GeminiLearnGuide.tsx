@@ -446,7 +446,7 @@ TypeError: Cannot read properties of undefined (reading 'map')
 
 코드:
 \`\`\`javascript
-function UserList({ data }) {
+function UserList({ data }: any) {
   return (
     <ul>
       {data.users.map(user => (
@@ -465,7 +465,7 @@ TypeError: Cannot read properties of undefined (reading 'map')
 
 Code:
 \`\`\`javascript
-function UserList({ data }) {
+function UserList({ data }: any) {
   return (
     <ul>
       {data.users.map(user => (

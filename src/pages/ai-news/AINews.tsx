@@ -119,7 +119,7 @@ export default function AINews() {
     const items = category === 'all'
       ? NEWS_DATA
       : NEWS_DATA.filter(n => n.category === category);
-    return items.sort((a, b) => new Date(b.date) - new Date(a.date));
+    return items.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   }, [category]);
 
   const formatDate = (d) => {

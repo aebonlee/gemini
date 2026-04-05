@@ -1,7 +1,7 @@
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
-export default function AuthGuard({ children }) {
+export default function AuthGuard({ children }: any) {
   const { isAuthenticated, loading } = useAuth();
 
   if (loading) {

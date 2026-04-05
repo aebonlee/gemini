@@ -72,7 +72,7 @@ function tokenizeLine(line, rules) {
     }
   }
 
-  tokens.sort((a, b) => a.start - b.start || b.end - a.end);
+  tokens.sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime() || new Date(b.end).getTime() - new Date(a.end).getTime());
 
   const filtered = [];
   let lastEnd = 0;
@@ -113,7 +113,7 @@ function highlightCode(code, language) {
   }).join('\n');
 }
 
-export default function CodeBlock({ code, language = '' }) {
+export default function CodeBlock({ code, language = '' }: any) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
