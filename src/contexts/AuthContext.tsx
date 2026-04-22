@@ -126,7 +126,7 @@ export function AuthProvider({ children }) {
       {needsProfileCompletion && user && (
         <ProfileCompleteModal user={user} onComplete={refreshProfile} />
       )}
-    {isLoggedIn && user && !needsProfileCompletion && (
+    {!!user && !needsProfileCompletion && (
       <PaymentNudgePopup user={user} siteSlug="gemini" />
     )}
     </AuthContext.Provider>
